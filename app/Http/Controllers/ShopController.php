@@ -18,22 +18,22 @@ use Illuminate\Support\Facades\Validator;
 class ShopController extends Controller
 {
     public function indexHome(){
-        $allitems=Preke::all();
+        $allitems = Preke::all()->sortByDesc('ikelimo_data');
         $photo=Nuotrauka::all();
         return view('home', compact('allitems', 'photo'));
     }
     public function indexVienas(){
-        $allitems=Preke::all();
+        $allitems=Preke::all()->sortByDesc('ikelimo_data');
         $photo=Nuotrauka::all();
         return view('vienas', compact('allitems', 'photo'));
     }
     public function indexDu(){
-        $allitems=Preke::all();
+        $allitems=Preke::all()->sortByDesc('ikelimo_data');
         $photo=Nuotrauka::all();
         return view('du', compact('allitems', 'photo'));
     }
     public function indexTrys(){
-        $allitems=Preke::all();
+        $allitems=Preke::all()->sortByDesc('ikelimo_data');
         $photo=Nuotrauka::all();
         return view('trys', compact('allitems', 'photo'));
     }
@@ -226,32 +226,20 @@ class ShopController extends Controller
 
     public function sort(Request $request, $category)
     {
-
         $allcategories=Kategorija::all();
         $cate=Kategorija::where('id_kateg','=',$category)->first();
-
         $photo=Nuotrauka::all();
-
         if ($category) {
         switch( $_POST['orderBy'] ) {
            case '':
-
-
-               $items = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortByDesc('ikelimo_data');
-
-
-
+               $allitems = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortByDesc('ikelimo_data');
                 break;
             case 'asc':
-              //  $items = DB::table('preke')->orderBy('kaina','asc')->get();
-                $items = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortBy('kaina');
-
-
+                $allitems = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortBy('kaina');
                 $photo=Nuotrauka::all();
                 break;
             case 'desc':
-                $items = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortByDesc('kaina');
-              //  $items = DB::table('preke')->orderBy('kaina','desc')->get();
+                $allitems = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortByDesc('kaina');
                 break;
         }
             $prekiusk = Preke::where('fk_prekes_kategorija', '=', $category)->get();
@@ -263,32 +251,32 @@ class ShopController extends Controller
         {
             $cate="null";
         }
-
-$allcategories = Kategorija::all();
-        return view('shop1', compact('allcategories','items','cate','photo'));
-        //return redirect()->back()->with(compact('items','allcategories','cate','photo'));
+        $allcategories = Kategorija::all();
+        if($category == 1) {
+            return view('vienas', compact('allcategories', 'allitems', 'cate', 'photo'));
+        } elseif ($category == 2) {
+            return view('du', compact('allcategories', 'allitems', 'cate', 'photo'));
+        } elseif ($category == 3) {
+        return view('trys', compact('allcategories','allitems','cate','photo'));
+        }
     }
     public function sort1(Request $request)
     {
-        //$orderBy = request('orderBy');
-        // $items = Preke::all()->sortBy('kaina','asc');
-        //$items = Preke::('kaina', 'asc')->get();
         $allcategories=Kategorija::all();
-        //$items = Preke::all();
+        $allitems = Preke::all();
         $cate='null';
         $photo=Nuotrauka::all();
         switch( $_POST['orderBy'] ) {
             case '':
-                $items = DB::table('preke')->orderBy('ikelimo_data','desc')->get();
+                $allitems = DB::table('preke')->orderBy('ikelimo_data','desc')->get();
                 break;
             case 'asc':
-                $items = DB::table('preke')->orderBy('kaina','asc')->get();
+                $allitems = DB::table('preke')->orderBy('kaina','asc')->get();
                 break;
             case 'desc':
-                $items = DB::table('preke')->orderBy('kaina','desc')->get();
+                $allitems = DB::table('preke')->orderBy('kaina','desc')->get();
                 break;
         }
-        return view('shop1', compact('allcategories','items','cate','photo'));
-        //return redirect()->back()->with(compact('items','allcategories','cate','photo'));
+        return view('home', compact('allcategories','allitems','cate','photo'));
     }
 }

@@ -29,8 +29,8 @@ Route::get('/cart', 'CartController@index')->name('cart');
 Route::get('/cart/{id}', 'CartController@deletePreke')->name('deletePreke');
 Route::post('/cart/{id}/update', 'CartController@updatePreke')->name('updatePreke');
 //shopo rikiavimas
-Route::post('/shop1', 'ShopController@sort1')->name('sort1');
-Route::post('/shop1/{cate}', 'ShopController@sort')->name('sort');
+Route::post('/home', 'ShopController@sort1')->name('sort1');
+Route::post('/home/{cate}', 'ShopController@sort')->name('sort');
 Route::get('email', 'EmailController@index')->name('email');
 Route::post('/','EmailController@send')->name('send');
 //paieska

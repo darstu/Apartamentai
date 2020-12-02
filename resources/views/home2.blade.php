@@ -1,7 +1,37 @@
 <section class="text-center">
+{{--rikiavimas--}}
+    <nav class="navbar navbar-inverse" style="background-color: #C8E7B5; border: 0px">
+        <div class="container-fluid" style=" padding-left: 16%; text-align: left">
+            <div class="row">
+            <form method="POST" action="{{Route('sort1')}}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <span class="input-field">
+        <label class="col" style=" text-align: right">Rikiuoti pagal: </label>
+        <select class="col" name="orderBy" id="orderBy"  class="form-control" style="width: 200px; border: 1px solid black; border-radius: 5px; display:inherit">
+            <option value="">Naujausi</option>
+            <option value="asc">Žema kaina</option>
+            <option value="desc">Aukšta kaina</option>
+        </select>
 
+        <button class="col" type="submit" class="btn" id="green_btn" style="display: inherit; margin-top: 0px; border: 1px solid black; border-radius: 5px;">Rikiuoti</button>
+                </span></form></div></div>
+    </nav>
+    <div id="result"></div>
+            <script>
+        var selectedItem = sessionStorage.getItem("SelectedItem");
+        $('#orderBy').val(selectedItem);
+        sessionStorage.removeItem("SelectedItem");
+        $('#orderBy').change(function () {
+            var idetVal = $(this).val();
+            sessionStorage.setItem("SelectedItem", idetVal);
 
-    @foreach($allitems as $item)
+        });
+
+</script>
+            @if(count($allitems) === 0)
+                <p>Kolkas apartamentų nuomavimuisi neturime</p>
+            @else
+        @foreach($allitems as $item)
         <div class="container" style="max-height: 230px;">
             <div class="card item row" style="border: 1px solid black">
                 <div class="img-wrap col-sm-4" style="height: 200px; max-width: 200px">
@@ -38,5 +68,6 @@
                 </div>
             </div>
     @endforeach
+    @endif
 
 </section>

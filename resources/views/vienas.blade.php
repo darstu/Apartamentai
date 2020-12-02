@@ -1,6 +1,34 @@
 @extends('layouts.app')
 
 @section('turinys')
+    <nav class="navbar navbar-inverse" style="background-color: #C8E7B5; border: 0px">
+        <div class="container-fluid" style=" padding-left: 16%; text-align: left">
+            <div class="row">
+                <form method="POST" action="{{Route('sort', 1)}}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <span class="input-field">
+        <label class="col" style=" text-align: right">Rikiuoti pagal: </label>
+        <select class="col" name="orderBy" id="orderBy"  class="form-control" style="width: 200px; border: 1px solid black; border-radius: 5px; display:inherit">
+            <option value="">Naujausi</option>
+            <option value="asc">Žema kaina</option>
+            <option value="desc">Aukšta kaina</option>
+        </select>
+
+        <button class="col" type="submit" class="btn" id="green_btn" style="display: inherit; margin-top: 0px; border: 1px solid black; border-radius: 5px;">Rikiuoti</button>
+                </span></form></div></div>
+    </nav>
+    <div id="result"></div>
+    <script>
+        var selectedItem = sessionStorage.getItem("SelectedItem");
+        $('#orderBy').val(selectedItem);
+        sessionStorage.removeItem("SelectedItem");
+        $('#orderBy').change(function () {
+            var idetVal = $(this).val();
+            sessionStorage.setItem("SelectedItem", idetVal);
+
+        });
+
+    </script>
     <?php $count = 0 ?>
     @foreach($allitems as $item)
         @if($item->fk_prekes_kategorija == 1)
@@ -25,7 +53,11 @@
                             <p>Įkelta: {{$item->ikelimo_data}}</p>
                         </div>
                         <div class="img-wrap col-sm-3" style="padding-top: 2%; max-height: 100px; width: 200px">
-                            <div class="mygtukas">Peržiūrėti apartamentą</div>
+                            @if (Auth::guest())
+                                <div class="mygtukui"><a href="{{asset('login')}}">Peržiūrėti apartamentą</a></div>
+                            @else
+                                <div class="mygtukui">Peržiūrėti apartamentą</div>
+                            @endif
                         </div>
                     </div>
                     <div class="img-wrap row" style="max-height: 100px">
