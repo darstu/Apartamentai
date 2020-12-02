@@ -10,8 +10,8 @@ class Preke extends Model
     protected $primaryKey= 'id_preke';
     public $timestamps = false;
 
-    protected $fillable = ['pavadinimas','aprasymas','kaina','ikelimo_data','ivertinimas',
-        'ivertinimu_sk','ilgis','diametras','galiuko_aukstis','fk_prekes_kategorija'];
+    protected $fillable = ['aprasymas','kaina','ikelimo_data','ivertinimas',
+        'ivertinimu_sk','adresas','fk_prekes_kategorija'];
 
 //    public function kategorija()
 //    {

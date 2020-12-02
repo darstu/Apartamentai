@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'ShopController@indexHome')->name('home1');
+Route::get('/vienas', 'ShopController@indexVienas')->name('vienas');
+Route::get('/du', 'ShopController@indexDu')->name('du');
+Route::get('/trys', 'ShopController@indexTrys')->name('trys');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'AboutController@index');
 Route::get('/shop1', 'ShopController@index')->name('shop1');
@@ -32,6 +35,7 @@ Route::get('email', 'EmailController@index')->name('email');
 Route::post('/','EmailController@send')->name('send');
 //paieska
 Route::get('/paieska', 'SearchController@search')->name('search');
+Route::get('/kaina', 'SearchController@kaina')->name('kaina');
 
 
 //TIK PRISIJUNGES USER

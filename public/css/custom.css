@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 html, body{
     height: 100%;
+    background-color: #C8E7B5;
 }
 body {
 }
@@ -8,14 +9,14 @@ a {
     color: #424242;
 }
 a:hover{
-    color: #86C232;
+    color: #1a184a;
 }
 
 a:active{
     color: #e32727;
 }
 .navbar-inverse .navbar-nav>li>a{
-    color: #D7D7D7;
+    color: #000000;
 }
 
 .dropdown-item {
@@ -40,9 +41,21 @@ h10 {
     text-align: center;
 
 }
+
+.filtravimas {
+    width: 100px;
+    height:100px;
+}
+
+.fil-tekstas{
+    font-size: 14px;
+    text-align: center;
+}
+
 footer {
-    background-color: #f2f2f2;
-    padding: 25px;
+    background-color: #FCBCAC;
+    border-top: 1px solid black;
+    padding-top: 10px;
 }
 .jumbotron {
     margin-bottom: 0px;
@@ -50,14 +63,14 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-    .galva {background: #efefef;}
+    .galva {background: #FCBCAC;}
 }
 
 .search{
     height: 26px;
     background: transparent;
     border: 0px;
-    color: #D7D7D7;
+    color: #000000;
 }
 .img-col{
     /*margin: auto 3%;*/
@@ -65,7 +78,7 @@ footer {
     margin-right: 3px;
 }
 .log {
-    max-width: 200px;
+    max-width: 700px;
     min-width: 50px;
     width: 100%;
     /*padding: 2% 2%;*/
@@ -153,9 +166,11 @@ footer {
     margin-bottom: 10%;
     border-radius: 10px;
     cursor: pointer;
-
+    height: 200px;
+    margin-left: 10%;
+    background-color: #ECE9C4;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
-    min-width: 229px;
+    width: 80%;
 
 }
 .item a:hover{
@@ -165,24 +180,22 @@ footer {
 }
 
 .item .img-wrap {
-    border-radius: 3px 3px 0 0;
     overflow: hidden;
-    position: relative;
-    height: 280px;
-    text-align: center;
-    padding: 2% 2%;
+    height: 150px;
+    text-align: left;
+    padding-left: 2%;
+    padding-top: 2%;
+
 }
 .item .img-wrap img {
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
-    padding: 2% 2%;
+
 }
 .item .info-wrap {
     overflow: hidden;
-    padding: 15px;
     border-top: 1px solid #eee;
-    /*height: 115px;*/
 
 }
 
@@ -303,18 +316,15 @@ footer {
     display: -ms-flexbox!important;
     display: flex!important;
 }
-/*@media only screen and (max-width: 1199px) {*/
-/*    .product_price {*/
-/*        margin-top: 60px;*/
-/*    }*/
-/*}*/
-    .product_price {
+
+.product_price {
         display: inline-block;
         font-size: 24px;
         font-weight: 500;
         margin-top: 20px;
         clear: left;
-    }
+
+}
 #cart-button {
     margin-left: 20px;
 }
@@ -322,81 +332,24 @@ footer {
 #search{
     padding-top: 10px;
     padding-left: inherit;
-
 }
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
-    color: #fff;
-    color: #86C232;
+    color: #000000;
+    color: #1a184a;
 }
 
 .activeMenu{
 
-    color: #86C232 !important;
+    color: #600060 !important;
     font-weight: bold;
 }
 
-@media (max-width: 766px) {
-    /*paslepia meniu kai sumazini ekrana*/
-    form#hide {
-        display: none;
-        visibility: hidden;
-    }
-    /*atidengti paieska*/
-    form#paslepti {
-        display: block;
-        padding: auto;
-        padding-top: 10px;
-        position: absolute;
-    }
-    /*atidengti sidebar*/
-    div#sideNot {
-        display:contents;
-        position: absolute;
-    }
-
-}
-/***minimizuoto side bar li elementas*/
-
-#sideNot  li  {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-}
-#sideNot ul li a:hover {
-    color: #474B4B;
-    text-decoration: none;
-    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
-    padding-right: 70%;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-/********/
-/*paslepta paieska suskleidus*/
-#paslepti{
-    display: none;
-}
-/*paslepta sidebar  suskleidus*/
-#sideNot{
-    display: none;
-
-}
 #paieska
 {
     background-color: #6C6F6F;
     color: #86C232;
 }
 
-/**side bar paslepti*/
-@media (max-width: 766px) {
-    #sidebar {
-        display: block;
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        display: block;
-        margin-left: 0;
-    }
-}
 .formPaieskaProd
 {
     color: #050505;
@@ -410,9 +363,29 @@ footer {
 {
     background-color: transparent;
     border-color: transparent;
-    border-bottom-color: #D7D7D7;
-    color: #D7D7D7;
+    border-bottom-color: #000000;
+    color: #000000;
 }
+.kainosPaieska {
+    background-color: white;
+    color: grey;
+    width: 70px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.miestoPaieska {
+    background-color: white;
+    color: grey;
+    width: 150px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
 .button
 {
     border-radius: 5px;
@@ -434,52 +407,7 @@ footer {
     min-height: 100vh;
     transition: all 0.3s;
 }
-/* Sidebar navigation */
-#sidebar {
-    min-width: 240px;
-    max-width: 240px;
-    min-height: 100vh;
-    margin-bottom: 20px;
-    box-shadow: 1px 0 0 0 rgba(0,0,0,.16);
-    /*border-right: 1px solid #636b6f;*/
-    padding: 20px;
-}
-@media (max-width: 766px) {
-    #sidebar {
-        margin-left: -240px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-}
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-}
-#sidebar ul li a:hover {
-    color: #000000;
-    background: #cbcbcb;
-}
-/*KAS CIA NZN*/
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #ff0101;
-    background: #6d7fcc;
-}
 
-.main {
-    padding: 20px;
-}
-
-@media (min-width: 768px) {
-    .main {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-}
-.main .page-header {
-    margin-top: 0;
-}
 /* Admin Sidebar navigation */
 #sidebaradmin {
     min-width: 100px;
@@ -513,24 +441,24 @@ hr{
 
 #mygtukas {
 
-    background-color: #61892F;
+    background-color: #FBDCD9;
     margin-top: 10px;
     text-align: center;
     text-decoration: none;
     display: block;
     font-size: 16px;
-    color: white;
+    color: black;
     cursor: pointer;
     margin-left: auto;
 }
 #green_btn {
 
-    background-color: #61892F;
+    background-color: #FBDCD9;
     text-align: center;
     text-decoration: none;
     display: block;
     font-size: 16px;
-    color: white;
+    color: black;
     cursor: pointer;
     border: 0;
 }
@@ -587,7 +515,7 @@ hr{
 }
 
 #register{
-    color: #86C232;
+    color: #6b3f0f;
 }
 
 .nopad{
@@ -598,7 +526,7 @@ hr{
 
 }
 .btn-link:hover{
-    color: #86C232;
+    color: #1a184a;
 }
 
 .pagination > .active > a,
@@ -633,4 +561,21 @@ hr{
 }
 .comments{
     width: 60%;
+}
+
+/*mygtukas*/
+.mygtukui {
+    background-color: #FBDCD9;
+    border: 1px solid black;
+    width: 150px;
+    height: 40px;
+    border-radius: 15%;
+    text-align: center;
+    padding-top: 8px;
+}
+/*login*/
+.log-card {
+    border: 1px solid black;
+    background-color: #ECE9C4;
+
 }

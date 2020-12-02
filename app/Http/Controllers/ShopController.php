@@ -18,15 +18,28 @@ use Illuminate\Support\Facades\Validator;
 class ShopController extends Controller
 {
     public function indexHome(){
-        $allcategories=Kategorija::all();
-
-        return view('home', compact('allcategories'));
+        $allitems=Preke::all();
+        $photo=Nuotrauka::all();
+        return view('home', compact('allitems', 'photo'));
+    }
+    public function indexVienas(){
+        $allitems=Preke::all();
+        $photo=Nuotrauka::all();
+        return view('vienas', compact('allitems', 'photo'));
+    }
+    public function indexDu(){
+        $allitems=Preke::all();
+        $photo=Nuotrauka::all();
+        return view('du', compact('allitems', 'photo'));
+    }
+    public function indexTrys(){
+        $allitems=Preke::all();
+        $photo=Nuotrauka::all();
+        return view('trys', compact('allitems', 'photo'));
     }
     public function index(){
         $allcategories=Kategorija::all();
         $items = Preke::all()->sortByDesc('ikelimo_data');
-        //$items = Preke::paginate(4);//->sortByDesc('ikelimo_data');
-       // $items=Preke::paginate(4);
         $cate='null';
         $photo=Nuotrauka::all();
 

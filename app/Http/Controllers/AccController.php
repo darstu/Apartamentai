@@ -64,7 +64,7 @@ class AccController extends Controller
     }
     public function signout(){
         Auth::logout();
-        return Redirect::to('shop1')->with('success', 'Loged out');
+        return Redirect::to('/');
     }
 
 

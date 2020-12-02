@@ -1,9 +1,11 @@
-<section class="text-center">
+@extends('layouts.app')
 
-
+@section('turinys')
+    <?php $count = 0 ?>
     @foreach($allitems as $item)
+        @if($item->fk_prekes_kategorija == 1)
         <div class="container" style="max-height: 230px;">
-            <div class="card item row" style="border: 1px solid black">
+            <div class="card item row">
                 <div class="img-wrap col-sm-4" style="height: 200px; max-width: 200px">
                     @foreach($photo as $ph)
                         @if ($item->id_preke == $ph->fk_preke)
@@ -23,20 +25,20 @@
                             <p>Įkelta: {{$item->ikelimo_data}}</p>
                         </div>
                         <div class="img-wrap col-sm-3" style="padding-top: 2%; max-height: 100px; width: 200px">
-                            @if (Auth::guest())
-                                <div class="mygtukui"><a href="{{asset('login')}}">Peržiūrėti apartamentą</a></div>
-                            @else
-                            <div class="mygtukui">Peržiūrėti apartamentą</div>
-                            @endif
+                            <div class="mygtukas">Peržiūrėti apartamentą</div>
                         </div>
                     </div>
                     <div class="img-wrap row" style="max-height: 100px">
-                            <p>Aprašymas:</p>
-                            <p>{{$item->aprasymas}}</p>
+                        <p>Aprašymas:</p>
+                        <p>{{$item->aprasymas}}</p>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
+        <?php $count = $count + 1; ?>
+        @endif
     @endforeach
-
-</section>
+    @if($count == 0)
+        <p style="text-align: center">Kolkas vieno kambario apartamentų neturime</p>
+    @endif
+@endsection

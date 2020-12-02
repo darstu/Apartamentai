@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html >
 <head>
-    <title>Alligator PDR online store</title>
+    <title>Apartamentų Nuoma</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -52,7 +52,7 @@
                 <img class="log" src="{{asset('images/log.png')}}" />
             </div>
             <div class="col-sm-4 ">
-                <h1 id="nameAlligator">Alligator PDR tools</h1>
+                <h1 id="nameAlligator">Apartamentų nuoma</h1>
             </div>
         </div>
     </div>

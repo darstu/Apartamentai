@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Kategorija;
 use App\Uzsakymas;
+use App\Nuotrauka;
 use Illuminate\Http\Request;
 use App\Preke;
 
@@ -40,5 +41,22 @@ class SearchController extends Controller
         $search = preg_replace("#[^0-9]#","",$search);
         $asUZ = Uzsakymas::where('id_uzsakymas', $search)->first();
         return view('searchorder')->with('asUZ', $asUZ);
+    }
+
+    public function kaina(Request $request)
+    {
+        $request->validate(['kaina1' => 'required|min:1|max:10']);
+        $request->validate(['kaina2' => 'required|min:1|max:10']);
+        $request->validate(['miestas' => 'required|min:1|max:100']);
+        $allitems = Preke::all();
+        $photo=Nuotrauka::all();
+        $kaina1 = $request->input('kaina1');
+        $kaina2 = $request->input('kaina2');
+        $miestas = $request->input('miestas');
+        $miestas = preg_replace("#[^0-9a-z_\s]#i","",$miestas);
+        $preke = Preke::where('kaina', 'BETWEEN', '%'.$kaina1.'%', 'AND', '%'.$kaina2.'%')
+            ->orWhere('adresas', 'LIKE', '%'.$miestas.'%')
+            ->paginate(5);
+        return view('kainarez',compact('allitems', 'photo'))->with('preke', $preke);
     }
 }

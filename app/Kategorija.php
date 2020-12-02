@@ -10,5 +10,5 @@ class Kategorija extends Model
     protected $primaryKey= 'id_kateg';
     public $timestamps = false;
 
-    protected $fillable = ['pavadinimas','nuotraukospav'];
+    protected $fillable = ['pavadinimas'];
 }
