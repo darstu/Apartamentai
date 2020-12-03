@@ -59,7 +59,7 @@
     @endif
     @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <p>There is an error in the data you are entering:</p>
+            <p>Netinkamai įvesta informacija:</p>
             @foreach ($errors->all() as $error)
                 <p>{{ $error }}</p>
             @endforeach
@@ -70,7 +70,18 @@
     <div class="container-fluid" >
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-
+                @if (Auth::guest())
+                    <li><a href="{{asset('login')}}"><span class="glyphicon glyphicon-user"></span>&nbspPrisijungti</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-foggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span> &nbsp{{ Auth::user()->name }} <span class="caret"></span> </a>
+                        <div class="dropdown-menu" >
+                            <a class="dropdown-item" href="{{ action('AccController@index')}}">Profilis</a>
+                            <a class="dropdown-item" href="{{ action('AccController@signout')}}">Atsijungti</a>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
@@ -106,10 +117,6 @@
     </div>
 </div>
 </div>
-<nav class="navbar navbar-inverse" style="background-color: #C8E7B5; border: 0px">
-    <div class="container-fluid" style=" padding-left: 9%; padding-top: 10px">
-    </div>
-</nav>
 
 <div id="content">
     <div class="container-fluid" >

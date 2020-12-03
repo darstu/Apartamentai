@@ -42,29 +42,27 @@ class ShopController extends Controller
         $items = Preke::all()->sortByDesc('ikelimo_data');
         $cate='null';
         $photo=Nuotrauka::all();
-
-
         return view('shop1', compact('allcategories','items','cate','photo'));
     }
 
     public function getCategory($category)
     {
         if ($category) {
-            $items = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortByDesc('ikelimo_data');
+            $allitems = Preke::where('fk_prekes_kategorija', '=', $category)->get()->sortByDesc('ikelimo_data');
             $prekiusk = Preke::where('fk_prekes_kategorija', '=', $category)->get();
             $cate=Kategorija::where('id_kateg','=',$category)->first();
 
             $photo=Nuotrauka::all();
 
         } else {
-            $items = Preke::all();
-            $prekiusk = $items;
+            $allitems = Preke::all();
+            $prekiusk = $allitems;
             $cate='null';
         }
 
         $allcategories = Kategorija::all();
 
-        return view('shop1', compact( 'allcategories','items','cate','photo'));
+        return view('shop1', compact( 'allcategories','allitems','cate','photo'));
     }
 
     public function openPreke($id)
