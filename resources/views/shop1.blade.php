@@ -15,6 +15,7 @@
         <div class="soniniam">
             <a href="">Kambarys 3</a>
         </div>
+        <div class="mygtukui" style="margin-top: 20px">Apmokėti</div>
     </div>
 <h3 style="font-weight: bold;">Kambarys 1:</h3>
 <div class="col" style="text-align: center">

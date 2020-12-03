@@ -20,7 +20,7 @@ class CartController extends Controller
         if(session()->has('krepselis')) {
             $result=DB::table('krepselis')->where('krepselis.id_krepselis','=',$kr)->leftJoin('preke_krepselis', 'id_krepselis','=','preke_krepselis.fk_krepselis')
                 ->leftJoin('preke','preke_krepselis.fk_preke','=','id_preke')
-                ->select('preke_krepselis.*','preke.kaina','preke.pavadinimas','preke.aprasymas',DB::raw('krepselis.kaina as kr_kaina'))->get();
+                ->select('preke_krepselis.*','preke.kaina','preke.aprasymas',DB::raw('krepselis.kaina as kr_kaina'))->get();
 
             $visosp = DB::table('preke_krepselis')->where('preke_krepselis.fk_krepselis','=',$kr)->get();
             $kiekelis=0;

@@ -25,7 +25,7 @@
                         <td data-th="Product">
 {{--                            <div class="row">--}}
                                 <div class="col-sm-8">
-                                    <h4 style="padding-left: 15px" id="countas"> &nbsp {{$resul->pavadinimas}} </h4>
+                                    <h4 style="padding-left: 15px" id="countas"> &nbsp</h4>
                                 </div>
 {{--                            </div>--}}
                         </td>

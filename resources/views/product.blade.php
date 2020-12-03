@@ -2,37 +2,31 @@
 
 @section('turinys')
 
-    <a href="{{action('AdminController@addProduct')}}" id="green_btn" class="btn btn-primary" style="width: 120px; margin-left: 30px">
-        Add product</a>
+    <a href="{{action('AdminController@addProduct')}}" id="green_btn" class="btn btn-primary" style="border: 1px solid black; width: 200px; margin-left: 30px">
+        Pridėti apartamentą</a>
     <ul class="col-md-3">
 
-        @include('productsearch')
+{{--        @include('productsearch')--}}
 
-    <div class="container">
-        <div class="col-lg-8 offset-lg-1" style="padding-top: 10px; margin-left: -15px">
+        <div class="container log-card" style="text-align: center;width: 900px; margin-top: 10px">
+        <div class="col-lg-8 offset-lg-1" style="padding-top: 10px; margin-left: -15px;width: 900px">
             <table class="table table-hover table-condensed" >
                 <thead>
                 <tr style="border-bottom: 0px">
-                    <th style="width:10%;border-bottom: 10px;">ID</th>
-                    <th style="width:10%;border-bottom: 10px;">Product</th>
-                    <th style="width:50%;border-bottom: 10px;">Description</th>
-                    <th style="width:10%;border-bottom: 10px;">Price</th>
-                    <th style="width:10%;border-bottom: 10px;">Length</th>
-                    <th style="width:10%;border-bottom: 10px;">Diameter</th>
-                    <th style="width:10%;border-bottom: 10px;">Tip</th>
-                    <th style="width:10%;border-bottom: 10px;">Category</th>
+                    <th style="width:10%;border-bottom: 10px;">Apartamento ID</th>
+                    <th style="width:50%;border-bottom: 10px;">Aprašymas</th>
+                    <th style="width:10%;border-bottom: 10px;">Kaina</th>
+                    <th style="width:10%;border-bottom: 10px;">Vieta</th>
+                    <th style="width:10%;border-bottom: 10px;">Kambarių sk.</th>
                 </tr>
                 </thead>
                 <tbody>
             @foreach($allPro as $asPro)
                 <tr>
                     <td>{{ $asPro->id_preke }}</td>
-                    <td>{{ $asPro->pavadinimas }}</td>
                     <td>{{ $asPro->aprasymas }}</td>
                     <td>{{ $asPro->kaina }}</td>
-                    <td>{{ $asPro->ilgis }}</td>
-                    <td>{{ $asPro->diametras }}</td>
-                    <td>{{ $asPro->galiuko_aukstis }}</td>
+                    <td>{{ $asPro->vieta }}</td>
                     @foreach($allcategory as $cat)
                     @if($cat->id_kateg === $asPro->fk_prekes_kategorija)
                     <td>{{ $cat->pavadinimas }}</td>

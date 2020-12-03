@@ -8,6 +8,7 @@ use App\Nuotrauka;
 use App\Preke;
 use App\PrekeKrepselis;
 use App\User;
+use App\Baldai;
 use App\Uzsakymas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +30,9 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $allcategories=Kategorija::all();
-        return view('admin',compact('allcategories'));
+        $allbaldai=Baldai::all();
+        $photo=Nuotrauka::all();
+        return view('admin',compact('allbaldai', 'photo'));
     }
     public function users()
     {
@@ -111,24 +113,18 @@ class AdminController extends Controller
     {
         $validator = Validator::make(
             [
-                'pavadinimas'=> $request->input('pavadinimas'),
                 'aprasymas'=> $request->input('aprasymas'),
                 'kaina' => $request->input('kaina'),
                 'ikelimo_data' => $request->input('ikelimo_data'),
-                'ilgis' => $request->input('ilgis'),
-                'diametras' => $request->input('diametras'),
-                'galiuko_aukstis' => $request->input('galiuko_aukstis'),
+                'adresas' => $request->input('adresas'),
                 'fk_prekes_kategorija' => $request->input('fk_prekes_kategorija')
 
             ],
             [
-                'pavadinimas'=> 'required|max:30',
                 'aprasymas'=> 'required',
                 'kaina' => 'required',
                 'ikelimo_data' => 'required',
-                'ilgis' => 'required',
-                'diametras' => 'required',
-                'galiuko_aukstis'=> 'required',
+                'adresas' => 'required',
                 'fk_prekes_kategorija' => 'required'
             ]
         );
@@ -142,13 +138,10 @@ class AdminController extends Controller
         {
             $data = Preke::where('id_preke', '=', $id)->update(
                 [
-                    'pavadinimas'=> $request->input('pavadinimas'),
                     'aprasymas'=> $request->input('aprasymas'),
                     'kaina' => $request->input('kaina'),
                     'ikelimo_data' => $request->input('ikelimo_data'),
-                    'ilgis' => $request->input('ilgis'),
-                    'diametras' => $request->input('diametras'),
-                    'galiuko_aukstis' => $request->input('galiuko_aukstis'),
+                    'adresas' => $request->input('adresas'),
                     'fk_prekes_kategorija' => $request->input('fk_prekes_kategorija')
                 ]
             );
@@ -186,22 +179,19 @@ class AdminController extends Controller
     public function insertProduct(Request $request)
     {
         $validator = Validator::make(
-            [   'pavadinimas' =>$request->input('pavadinimas'),
+            [
                 'fk_prekes_kategorija' =>$request->input('fk_prekes_kategorija'),
                 'aprasymas' =>$request->input('aprasymas'),
                 'kaina' =>$request->input('kaina'),
                 'ikelimo_data' =>$request->input('ikelimo_data'),
-                'ilgis' =>$request->input('ilgis'),
-                'diametras' =>$request->input('diametras')
+                'adresas' =>$request->input('adresas')
             ],
             [
-                'pavadinimas' =>'required|min:1|max:30',
                 'fk_prekes_kategorija' =>'required',
                 'aprasymas' =>'required|min:3',
                 'kaina' =>'required',
                 'ikelimo_data' =>'required',
-                'ilgis' =>'required',
-                'diametras' =>'required'
+                'adresas' =>'required'
             ]
         );
 
@@ -213,14 +203,11 @@ class AdminController extends Controller
         else
         {
             $allPro = new Preke();
-            $allPro->pavadinimas = $request->input('pavadinimas');
             $allPro->fk_prekes_kategorija = $request->input('fk_prekes_kategorija');
             $allPro->aprasymas = $request->input('aprasymas');
             $allPro->kaina = $request->input('kaina');
             $allPro->ikelimo_data = $request->input('ikelimo_data');
-            $allPro->ilgis = $request->input('ilgis');
-            $allPro->diametras = $request->input('diametras');
-            $allPro->galiuko_aukstis = $request->input('galiuko_aukstis');
+            $allPro->adresas = $request->input('adresas');
 
             $allPro->save();
 

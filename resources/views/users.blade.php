@@ -2,14 +2,14 @@
 
 @section('turinys')
 
-    <div class="container">
-        <div class="col-lg-8 offset-lg-1">
-            <table id="cart" class="table table-hover table-condensed" >
+    <div class="row log-card" style="text-align: center; max-width: 500px; background-color: #ECE9C4; margin-left: 20px">
+        <div class="col-lg-12">
+            <table class="table table-hover table-condensed" >
                 <thead>
                 <tr>
                     <th style="width:15%;border-bottom: 10px;">ID</th>
-                    <th style="width:20%;border-bottom: 10px;">Name</th>
-                    <th style="width:30%;border-bottom: 10px;">Email</th>
+                    <th style="width:20%;border-bottom: 10px;">Vardas</th>
+                    <th style="width:30%;border-bottom: 10px;">El. paštas</th>
                     <th style="width:5%"></th>
                     <th style="width:5%"></th>
                 </tr>

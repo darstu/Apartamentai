@@ -23,7 +23,7 @@
                             @foreach($result as $res)
                                 <div class="prekes_eilute">
                                     <span class="kaina" style="font-size: 12pt">{{$res->kiekis*$res->kaina}} €</span>
-                                    <h4 class="item-name" id="countas" {{--style="text-decoration: underline;"--}}>{{$res->pavadinimas}}</h4>
+                                    <h4 class="item-name" id="countas" {{--style="text-decoration: underline;"--}}></h4>
 
                                 </div>
                             @endforeach

@@ -2,7 +2,7 @@
 
 @section('turinys')
     <h1 id="antraste2" style="text-align: center">Prisijungimas</h1>
-        <div class="col-lg-10" style="alignment: center; max-width: 850px; margin-left: 80px">
+        <div class="col-lg-10" style="alignment: center; max-width: 850px; margin-left: 150px">
             <div class="log-card" style="padding-bottom: 20px; margin-left: 40%; border-radius: 10%">
             <div class="container-fluid" style="text-align: center">
                 <br>
