@@ -16,7 +16,6 @@ class PayController extends Controller
         $cate='null';
 
         $kr=session('krepselis');
-//        dd($kr);
 
         if(session()->has('krepselis')) {
             $result = DB::table('krepselis')->where('krepselis.id_krepselis', '=', $kr)->leftJoin('preke_krepselis', 'id_krepselis', '=', 'preke_krepselis.fk_krepselis')

@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.nosearch')
 
 @section('turinys')
 
 <div class="container">
     <div class="row justify-content-center">
-        <h1 id="antraste" >Reset Password</h1>
+        <h1 id="antraste" >Atstatyti slaptažodį</h1>
         <div class="col-lg-8 col-md-8 col-sm-8">
             <hr>
             <div class="card">
@@ -17,11 +17,11 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('password.email') }}" style="background-color: #ECE9C4; border: 1px solid black; border-radius: 10px; padding-top: 20px; padding-left: 20px; margin-right: 300px">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('El. Paštas') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -37,7 +37,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-10 offset-md-4">
                                 <button type="submit" class="btn btn-primary" id="mygtukas">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('Siųsti slaptažodžio atkūrimą') }}
                                 </button>
                             </div>
                         </div>

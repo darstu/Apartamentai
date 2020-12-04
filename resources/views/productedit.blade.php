@@ -6,9 +6,9 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header" id="antraste">Redaguoti apartamentą</div>
-                    <hr>
+       
                     <div class="card-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('confirmEditedProduct', $selectedProduct->id_preke) }}">
+                    <form class="form-horizontal log-card" style="alignment: center; max-width: 500px; padding-left: 20px; padding-bottom: 20px; padding-top: 20px; border-radius: 10%" role="form" method="POST" action="{{ url('confirmEditedProduct', $selectedProduct->id_preke) }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-md-right" style="margin-left: 30px">Kambarių sk.</label>

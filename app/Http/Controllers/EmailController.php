@@ -29,7 +29,7 @@ class EmailController extends Controller
             /* Mail::send(['text'=>$request->input('tekstas')],['name'=>'Vardas'], */
             function ($message) use($data){
                 $message->from($data['email'], $data['email']);
-                $message->to('plaktaplyta98@gmail.com');
+                $message->to('bambosfuga@gmail.com');
                 $message->subject($data['sbj']);
 
             });

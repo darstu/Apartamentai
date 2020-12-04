@@ -34,9 +34,9 @@ use Illuminate\Support\Str;
                             </div>
                             <div class="img-wrap col-sm-3" style="padding-top: 2%; max-height: 100px; width: 200px">
                                 @if (Auth::guest())
-                                    <div class="mygtukas"><a href="{{asset('login')}}">Peržiūrėti apartamentą</a></div>
+                                    <div class="mygtukui"><a href="{{asset('login')}}">Peržiūrėti apartamentą</a></div>
                                 @else
-                                    <div class="mygtukas">Peržiūrėti apartamentą</div>
+                                    <a href="{{action('ShopController@openPreke', $item->id_preke)}}" class="text-body"><div class="mygtukui">Peržiūrėti apartamentą</div></a>
                                 @endif
                             </div>
                         </div>

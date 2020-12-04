@@ -38,20 +38,20 @@
                                     </option>
                                 </select>
                             </div>
-                        <div class="product_price" style="min-height: 70px">{{$item->kaina}} Eur &nbsp
-                            <button type="submit" style="border: 1px solid black;" class="btn btn-primary pull-right" id="green_btn"><a href="{{action('ShopController@index', $item->id_preke)}}" class="text-body">Rezervuoti</a></button>
+                        <div class="product_price" style="min-height: 90px">{{$item->kaina}} Eur &nbsp
+                            <a href="{{action('ShopController@index', $item->id_preke)}}" class="text-body"><div style="border: 1px solid black;" class="btn btn-primary pull-right" id="green_btn">Rezervuoti</div></a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-<div align="center">
-    <div class="product_name"><p style="margin-bottom: 0px">Įvertinimas:
-        @if($item->Ivertinimu_sk!=0){{round($item->ivertinimas/$item->Ivertinimu_sk, 2)}}
-        @else 0
-        @endif
-        </p></div>
-    <form class="rating" method="POST" action="{{ Route('insertPrekeVertinimas', $item->id_preke) }}">
+<div align="center" style="margin-bottom: 0px; padding-top: 20px">
+    <form style="margin-right: 30%; margin-left: 30%" class="rating" method="POST" action="{{ Route('insertPrekeVertinimas', $item->id_preke) }}">
+        <div class="product_name">Įvertinimas:
+            @if($item->Ivertinimu_sk!=0){{round($item->ivertinimas/$item->Ivertinimu_sk, 2)}}
+            @else 0
+            @endif
+        </div>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div  style="margin-left: 7px" class="input-group">
             <label>
@@ -92,6 +92,11 @@
     </form>
     <br>
 </div>
+<br>
+    <br>
+    <br>
+    <br>
+
 
     <div style="text-align: center;"> <embed src="https://www.google.com/maps/d/u/0/embed?mid=1gWVYWALhb7n7nD4rbfWiG03f1cA7E05O&fbclid=IwAR00wZhN5DRPnokA4951NF2Gcw73XdimS_jkiwdIFWsYz1MjQ61poY5iQOI&ll=54.895111289701404%2C23.91766650658849&z=18" style="width:500px; border: 3px solid gray; height: 300px; border-radius: 10%"></div>
 

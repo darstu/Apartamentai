@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Apartamentų Nuoma</title>
+    <title>apartamentunuoma.lt</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -77,7 +77,6 @@
                         <a href="#" class="dropdown-foggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span> &nbsp{{ Auth::user()->name }} <span class="caret"></span> </a>
                         <div class="dropdown-menu" >
-                            <a class="dropdown-item" href="{{ action('AccController@index')}}">Profilis</a>
                             <a class="dropdown-item" href="{{ action('AccController@signout')}}">Atsijungti</a>
                         </div>
                     </li>

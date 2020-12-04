@@ -20,9 +20,7 @@ use Illuminate\Database\QueryException;
 class OrderController extends Controller
 {
     public function index(){
-        $allcategories=Kategorija::all();
         $items = Preke::all();
-        $cate='null';
 
         $kr=session('krepselis');
 
@@ -31,7 +29,7 @@ class OrderController extends Controller
                 ->leftJoin('preke', 'preke_krepselis.fk_preke', '=', 'id_preke')
                 ->select('preke_krepselis.*', 'preke.kaina', 'preke.aprasymas', DB::raw('krepselis.kaina as kr_kaina'))->get();
         }
-        return view('order', compact('allcategories','result', 'kr'));
+        return view('order', compact('result', 'kr'));
     }
 
 

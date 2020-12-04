@@ -5,10 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" id="antraste">Nautotojo redagavimas</div>
-                    <hr>
+                    <div class="card-header" id="antraste">Naudotojo redagavimas</div>
+
                     <div class="card-body">
-    <form class="form-horizontal" role="form" method="POST" action="{{ url('confirmEditedUser', $selectedUser->id) }}">
+    <form class="form-horizontal log-card" style="alignment: center; max-width: 500px; padding-left: 20px; padding-bottom: 20px; padding-top: 20px; border-radius: 10%" role="form" method="POST" action="{{ url('confirmEditedUser', $selectedUser->id) }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group row">

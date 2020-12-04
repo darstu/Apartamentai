@@ -74,9 +74,11 @@ Route::group(['as'=>'adminRoutes.','middleware' => 'auth:admin'], function () {
     Route::post('/manageOrder', 'AdminController@insertOrders')->name('manageOrders');
     Route::get('/manageOrder/orderedit/{id}','AdminController@editOrders')->name('orderedit');
     Route::post('confirmEditedOrder/{id}', 'AdminController@confirmEditedOrders')->name('confirmEditedOrders');
-    Route::get('/manageCategory/{id}', 'AdminController@deleteCategory')->name('deleteCategory');
-    Route::post('/manageCategory', 'AdminController@insertCategory')->name('manageCategory');
-    Route::get('/manageCategory', 'AdminController@addCategory')->name('addCategory');
+    Route::get('/manageFurniture/{id}', 'AdminController@deleteCategory')->name('deleteCategory');
+    Route::post('/manageFurniture', 'AdminController@insertCategory')->name('manageFurniture');
+    Route::get('/manageFurniture', 'AdminController@addCategory')->name('addCategory');
+    Route::get('/manageFurniture/baldaiedit/{id}','AdminController@editBaldas')->name('baldaiedit');
+    Route::post('confirmEditedBaldai/{id}', 'AdminController@confirmEditedBaldai')->name('confirmEditedBaldai');
     //adminpaieska
     Route::get('/productsearch', 'SearchController@searchproduct')->name('searchproduct');
     Route::get('/ordersearch', 'SearchController@searchorders')->name('searchorder');

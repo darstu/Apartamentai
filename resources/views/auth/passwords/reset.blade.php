@@ -1,24 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.nosearch')
 
 @section('turinys')
 
 <div class="container">
 
     <div class="row justify-content-center">
-        <h1 id="antraste" >Reset password</h1>
+        <h1 id="antraste" >Atstatyti slaptažodį</h1>
         <div class="col-md-8 col-sm-8">
             <hr>
             <div class="card">
-{{--                <div class="card-header">{{ __('Reset Password') }}</div>--}}
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ route('password.update') }}" style="background-color: #ECE9C4; border: 1px solid black; border-radius: 10px; padding-top: 20px; padding-left: 20px; margin-right: 300px">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('El. Paštas:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
@@ -39,7 +38,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: darkred">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>

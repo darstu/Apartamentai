@@ -2,7 +2,7 @@
 
 @section('turinys')
     <h1 id="antraste2" style="text-align: center">Prisijungimas</h1>
-        <div class="col-lg-10" style="alignment: center; max-width: 850px; margin-left: 150px">
+        <div class="col-lg-10" style="alignment: center; max-width: 850px; margin-left: 100px">
             <div class="log-card" style="padding-bottom: 20px; margin-left: 40%; border-radius: 10%">
             <div class="container-fluid" style="text-align: center">
                 <br>
@@ -14,7 +14,7 @@
                                 <input id="email" type="email" style="min-width: 250px" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+{{--                                        <strong style="color: darkred">{{ $message }}</strong>--}}
                                     </span>
                                 @enderror
                             </div>
@@ -26,7 +26,7 @@
                                 <input id="password" type="password" style="min-width: 250px" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+{{--                                        <strong style="color: darkred">{{ $message }}</strong>--}}
                                     </span>
                                 @enderror
                             </div>
@@ -48,12 +48,6 @@
                         <div class="col-lg-6"  style="margin-left: 115px">
                             <div style="text-align: left;">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Prisiminti mane') }}
-                                    </label>
-                                </div>
-{{--                                <button class="btn" id="mygtukas" type="submit">--}}
 
                                 <button type="submit" id="mygtukas" class="btn btn-primary" style="margin-left: 50px">
                                     {{ __('Prisijungti') }}

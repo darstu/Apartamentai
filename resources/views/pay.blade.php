@@ -21,7 +21,7 @@
                     purchase_units: [{
                         amount: {@foreach($result as $kaina)
                             value:"{{$kaina->kr_kaina}}",
-                            @break
+                           @break
                                 @endforeach
                             currency: 'EUR'
                         }

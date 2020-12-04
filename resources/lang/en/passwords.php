@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have emailed your password reset link!',
-    'throttled' => 'Please wait before retrying.',
+    'reset' => 'Jūsų slaptažodis buvo atstatytas!',
+    'sent' => 'Išsiuntėme jums atkūrimo linką!',
+    'throttled' => 'Prašome palaukti prieš bandant dar kartą.',
     'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that email address.",
+    'user' => "Duomenų bazėje nerandame naudotojo su šitu el. paštu.",
 
 ];

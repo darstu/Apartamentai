@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Apartamentų Nuoma</title>
+    <title>apartamentunuoma.lt</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -59,7 +59,7 @@
         @endif
         @if (count($errors) > 0)
             <div class="alert alert-danger">
-                <p>There is an error in the data you are entering:</p>
+                <p>Yra klaidų duomenyse kuriuos įvedate:</p>
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
                     @endforeach

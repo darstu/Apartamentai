@@ -80,7 +80,7 @@ class AdminController extends Controller
             'email' =>$request->input('email')
         ]);
     }
-    return Redirect::to('/users')->with('success', 'User Edited');
+    return Redirect::to('/users')->with('success', 'Naudotojas sėkmingai redaguotas');
 }
 
     public function editUser($id)
@@ -100,7 +100,7 @@ class AdminController extends Controller
             Uzsakymas::where('id_uzsakymas','=',$uz->id_uzsakymas)->delete();
         }
         User::where('id','=',$id)->delete();
-        return Redirect::to('/users')->with('User deleted');
+        return Redirect::to('/users')->with('Naudotojas ištrintas');
     }
     public function signout()
     {
@@ -146,7 +146,7 @@ class AdminController extends Controller
                 ]
             );
         }
-        return Redirect::to('/product')->with('success', 'Product Edited');
+        return Redirect::to('/product')->with('success', 'Apartamentas sėkmingai redaguotas');
     }
 
     public function editProduct($id)
@@ -173,7 +173,7 @@ class AdminController extends Controller
             PrekeKrepselis::where('id_Tarpine','=',$pk->id_Tarpine)->delete();
         }
         Preke::where('id_preke','=',$id)->delete();
-        return Redirect::to('/product')->with('Product deleted');
+        return Redirect::to('/product')->with('Apartamentas ištrintas');
     }
 
     public function insertProduct(Request $request)
@@ -212,7 +212,7 @@ class AdminController extends Controller
             $allPro->save();
 
         }
-        return Redirect::to('/product')->with('success', 'Product added');
+        return Redirect::to('/product')->with('success', 'Apartamentas sėkmingai pridėtas');
     }
     public function addProduct()
     {
@@ -257,7 +257,7 @@ class AdminController extends Controller
                 ]
             );
         }
-        return Redirect::to('/orders')->with('success', 'Order Edited');
+        return Redirect::to('/orders')->with('success', 'Rezervacija sėkmingai redaguota');
     }
 
     public function editOrders($id)
@@ -274,29 +274,25 @@ class AdminController extends Controller
             Apmokejimas::where('id_apmokėjimas','=',$ap->id_apmokėjimas)->delete();
         }
         Uzsakymas::where('id_uzsakymas','=',$id)->delete();
-        return Redirect::to('/orders')->with('Order deleted');
+        return Redirect::to('/orders')->with('Rezervacija ištrinta');
     }
 
     public function deleteCategory($id)
     {
-        $katpreke = Preke::where('fk_prekes_kategorija', '=', $id)->get();
-        if($katpreke->count() === 0) {
-            Kategorija::where('id_kateg', '=', $id)->delete();
-            return Redirect::to('/admin')->with('success', 'Category deleted');
-        }
-        else{
-            return Redirect::back()->withErrors('First delete all the products in this category.');
-        }
+            Baldai::where('id', '=', $id)->delete();
+            return Redirect::to('/admin')->with('success', 'Baldas ištrintas');
     }
     public function insertCategory(Request $request)
     {
         $validator = Validator::make(
             [   'pavadinimas' =>$request->input('pavadinimas'),
-                'nuotraukospav' =>$request->input('nuotraukospav')
+                'nuotraukos_pav' =>$request->input('nuotraukos_pav'),
+                'apartamento_id' => $request->input('apartamento_id')
             ],
             [
                 'pavadinimas' => 'required|min:1|max:30',
-                'nuotraukospav' =>'required|min:1|max:30'
+                'nuotraukos_pav' =>'required|min:1|max:30',
+                'apartamento_id' =>'required|min:1|max:9'
             ]
         );
 
@@ -307,17 +303,56 @@ class AdminController extends Controller
         }
         else
         {
-            $allCat = new Kategorija();
+            $allCat = new Baldai();
             $allCat->pavadinimas = $request->input('pavadinimas');
-            $allCat->nuotraukospav  = $request->input('nuotraukospav');
+            $allCat->nuotraukos_pav  = $request->input('nuotraukos_pav');
+            $allCat->apartamento_id  = $request->input('apartamento_id');
 
             $allCat->save();
 
         }
-        return Redirect::to('/admin')->with('success', 'Category added');
+        return Redirect::to('/admin')->with('success', 'Baldas sėkmingai pridėtas');
     }
     public function addCategory()
     {
-        return view('manageCategory');
+        return view('manageFurniture');
+    }
+    public function editBaldas($id)
+    {
+        $selectedBaldas = Baldai::where('id','=',$id)->first();
+        $allBaldai = Baldai::all();
+        return view('baldaiedit', compact('selectedBaldas', 'allBaldai'));
+    }
+    public function confirmEditedBaldai(Request $request, $id)
+    {
+        $validator = Validator::make(
+            [
+                'pavadinimas' =>$request->input('pavadinimas'),
+                'nuotraukos_pav' =>$request->input('nuotraukos_pav'),
+                'apartamento_id' => $request->input('apartamento_id')
+
+            ],
+            [
+                'pavadinimas' => 'required|min:1|max:30',
+                'nuotraukos_pav' =>'required|min:1|max:30',
+                'apartamento_id' =>'required|min:1|max:9'
+            ]
+        );
+
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator);
+        }
+        else
+        {
+            $data = Baldai::where('id', '=', $id)->update(
+                [
+                    'pavadinimas' =>$request->input('pavadinimas'),
+                    'nuotraukos_pav' =>$request->input('nuotraukos_pav'),
+                    'apartamento_id' => $request->input('apartamento_id')
+                ]
+            );
+        }
+        return Redirect::to('/admin')->with('success', 'Baldas sėkmingai redaguotas');
     }
 }
